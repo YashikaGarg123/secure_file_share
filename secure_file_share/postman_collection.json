@@ -1,0 +1,156 @@
+{
+  "info": {
+    "name": "Secure File Sharing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json "
+  },
+  "item": [
+    {
+      "name": "Ops User - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"ops@example.com\",\n    \"password\": \"password\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/ops/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["ops", "login"]
+        }
+      }
+    },
+    {
+      "name": "Ops User - Upload File",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <your_jwt_token>"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5000/upload",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["upload"]
+        }
+      }
+    },
+    {
+      "name": "Client User - Signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"client@example.com\",\n    \"password\": \"password\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/client/signup",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["client", "signup"]
+        }
+      }
+    },
+    {
+      "name": "Client User - Verify Email",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/client/verify-email/{{verification_token}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["client", "verify-email", "{{verification_token}}"]
+        }
+      }
+    },
+    {
+      "name": "Client User - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"client@example.com\",\n    \"password\": \"password\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/client/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["client", "login"]
+        }
+      }
+    },
+    {
+      "name": "Client User - List All Files",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <your_client_jwt_token>"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/files",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["files"]
+        }
+      }
+    },
+    {
+      "name": "Client User - Download File",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <your_client_jwt_token>"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/download-file/{{download_token}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["download-file", "{{download_token}}"]
+        }
+      }
+    }
+  ]
+}
